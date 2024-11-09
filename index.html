@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+ 
+
+</head>
+<body>
+
+  <main class="main">
+      <div class="image-container">
+        <picture>
+          <source media="(width >= 50em )" srcset="assets/images/illustration-sign-up-desktop.svg">
+        <img src="assets/images/illustration-sign-up-mobile.svg" alt="">
+      </picture>
+      </div>
+
+      <div class="text-container">
+        <h1>Stay updated!</h1>
+        <p> Join 60,000+ product managers receiving monthly updates on:
+        </p>
+        <ul>
+          <li><img src="assets/images/icon-list.svg" class="icon-list">
+            Product discovery and building what matters
+          </li>
+          <li><img src="assets/images/icon-list.svg" class="icon-list">
+            Measuring to ensure updates are a success
+          </li>
+          <li><img src="assets/images/icon-list.svg" class="icon-list">And much more!
+          </li>
+        </ul>
+
+        <div class="message">
+          <label>Email address</label>
+          <span class="error-message"><!--  Valid email recuired --></span>
+        </div>
+        <input type="email" placeholder="email@company.com" class="input">
+
+        <button class="subscribe-button">Subscribe to monthly newsletter
+
+        </button>
+      </div>
+ 
+    <div class="success-message ">
+      <img src="assets/images/icon-success.svg" alt="">
+      <h1>Thanks for subscribing!</h1>
+      <div>
+        A confirmation email has been sent to ash@loremcompany.com
+        Please open it and click the button inside to confirm your subscription.
+      </div>
+
+      <button class="dismiss-button">
+        Dismiss message
+      </button>
+    </div>
+
+  </main>
+
+
+ <script>
+  let errorMessage = document.querySelector('.error-message');
+  const inputField = document.querySelector('.input');
+  const subscribeButton = document.querySelector('.subscribe-button');
+  const dismissButton = document.querySelector('.dismiss-button')
+  const successMessage = document.querySelector('.success-message');
+  const main = document.querySelector('.main');
+  
+
+
+  subscribeButton.onclick = () => {
+    if(!inputField.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+      errorMessage.innerHTML = 'Valid email recuired';
+      inputField.classList.toggle('input-error');
+    } else{
+      successMessage.classList.toggle('active-message');
+      main.classList.toggle('.hide');
+   
+    }
+  }
+  dismissButton.onclick = ()=>{
+
+    inputField.value = '';
+     errorMessage.innerHTML = '';
+      inputField.classList.remove('input-error');
+      successMessage.classList.toggle('active-message');
+      main.classList.toggle('.hide');
+      
+  }
+ </script>
+</body>
+</html>
